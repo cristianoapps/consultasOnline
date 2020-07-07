@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.marcacao.consultasOnline.domain.Especialidade;
 import br.com.marcacao.consultasOnline.service.EspecialidadeService;
+import javassist.tools.rmi.ObjectNotFoundException;
 
 @RestController
 @RequestMapping(value = "/especialidades")
@@ -19,7 +20,7 @@ public class EspecialidadeResource {
 	private EspecialidadeService especialidadeService;
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<?> findById(@PathVariable Integer id) {
+	public ResponseEntity<?> findById(@PathVariable Integer id) throws ObjectNotFoundException {
 		Especialidade especialidade = especialidadeService.findById(id);
 		return ResponseEntity.ok().body(especialidade);
 		

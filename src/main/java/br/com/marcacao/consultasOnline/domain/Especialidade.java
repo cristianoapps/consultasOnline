@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -30,6 +32,7 @@ public class Especialidade implements Serializable {
 	@Column(name = "ds_especialidade", nullable = false)
 	@NonNull
 	private String descricaoEspecialidade;
+	@JsonBackReference
 	@ManyToMany(mappedBy = "especialidades")
 	private List<Medico> medicos = new ArrayList<>();
 }

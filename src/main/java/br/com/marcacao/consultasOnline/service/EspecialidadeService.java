@@ -25,6 +25,9 @@ public class EspecialidadeService {
 		return especialidades;
 	}
 	
+	public void incluirTodos(List<Especialidade> especialidades) {
+		especialidadeRepository.saveAll(especialidades);
+	}
 	public Especialidade incuir(Especialidade especialidade) {
 		especialidadeRepository.save(especialidade);
 		return especialidade;

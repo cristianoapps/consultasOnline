@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
 import br.com.marcacao.consultasOnline.enumeration.SimNaoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,5 +21,7 @@ public class Convenio implements Serializable {
 	private Integer codigoConvenio;
 	private String descricaoConvenio;
 	SimNaoEnum isAtivo;
+	@ManyToMany
+	@JoinTable
 	List<Plano> planos = new ArrayList<Plano>();
 }

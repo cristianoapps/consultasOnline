@@ -1,13 +1,13 @@
 package br.com.marcacao.consultasOnline.domain;
 
 import java.io.Serializable;
-import java.sql.Types;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -23,7 +23,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Medico implements Serializable{
+public class Medico implements Serializable {
 
 	private static final long serialVersionUID = -5480352003974156067L;
 	@Id
@@ -38,20 +38,16 @@ public class Medico implements Serializable{
 	@Column(name = "nm_mae", nullable = false)
 	@NonNull
 	private String nomeMae;
-	@Column(name = "sexo", nullable = false)
 	@NonNull
+	@Enumerated
+	@Column(columnDefinition = "varchar", nullable = false)
 	private SexoEnum sexo;
-	@Column(name = "crm", nullable = false)
+	@Column(nullable = false)
 	@NonNull
 	private String crm;
-	
+
 	@ManyToMany
-	@JoinTable(name = "ESPECIALIDADE_MEDICO",
-        joinColumns = @JoinColumn(name = "cpf_medico"),
-   inverseJoinColumns = @JoinColumn(name = "cd_especialidade")
-	)
-	private List<Especialidade> especialidades = new  ArrayList<>();
-	
-	
+	@JoinTable(name = "ESPECIALIDADE_MEDICO", joinColumns = @JoinColumn(name = "cpf_medico"), inverseJoinColumns = @JoinColumn(name = "cd_especialidade"))
+	private List<Especialidade> especialidades = new ArrayList<>();
 
 }

@@ -11,25 +11,30 @@ import br.com.marcacao.consultasOnline.repositories.EspecialidadeRepository;
 
 @Service
 public class EspecialidadeService {
-	
+
 	@Autowired
 	private EspecialidadeRepository especialidadeRepository;
 
-	public Especialidade buscar(Integer id) {
+	public Especialidade findById(Integer id)  {
 		Optional<Especialidade> especialidade = especialidadeRepository.findById(id);
 		return especialidade.orElse(null);
 	}
-	
-	public List<Especialidade> buscar() {
+
+	public List<Especialidade> findAll() {
 		List<Especialidade> especialidades = especialidadeRepository.findAll();
 		return especialidades;
 	}
-	
-	public void incluirTodos(List<Especialidade> especialidades) {
+
+	public void saveAll(List<Especialidade> especialidades) {
 		especialidadeRepository.saveAll(especialidades);
 	}
-	public Especialidade incuir(Especialidade especialidade) {
+
+	public Especialidade save(Especialidade especialidade) {
 		especialidadeRepository.save(especialidade);
 		return especialidade;
+	}
+
+	public void deleteAll() {
+		especialidadeRepository.deleteAll();
 	}
 }

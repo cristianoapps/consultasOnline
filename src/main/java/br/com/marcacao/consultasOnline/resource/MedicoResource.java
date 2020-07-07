@@ -1,7 +1,5 @@
 package br.com.marcacao.consultasOnline.resource;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,22 +11,16 @@ import br.com.marcacao.consultasOnline.domain.Especialidade;
 import br.com.marcacao.consultasOnline.service.EspecialidadeService;
 
 @RestController
-@RequestMapping(value = "/especialidades")
-public class EspecialidadeResource {
+@RequestMapping(value = "/medicos")
+public class MedicoResource {
 	@Autowired
-	private EspecialidadeService especialidadeService;
+	private EspecialidadeService medicoService;
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<?> findById(@PathVariable Integer id) {
-		Especialidade especialidade = especialidadeService.findById(id);
-		return ResponseEntity.ok().body(especialidade);
-		
-	}
-	@GetMapping
-	public ResponseEntity<?> findAll() {
+	public ResponseEntity<?> buscar(@PathVariable Integer id) {
 
-		List<Especialidade> especialidades = especialidadeService.findAll();
-		return ResponseEntity.ok().body(especialidades);
+		Especialidade medico = medicoService.findById(id);
+		return ResponseEntity.ok().body(medico);
 		
 	}
 }

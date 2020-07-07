@@ -22,8 +22,8 @@ public class ConsultasOnlineApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		Especialidade especialidade1 = new Especialidade(null, "CARDIOLOGIA");
-		Especialidade especialidade2 = new Especialidade(null, "OFTALMOLOGIA");
+		Especialidade especialidade1 = new Especialidade("CARDIOLOGIA");
+		Especialidade especialidade2 = new Especialidade("OFTALMOLOGIA");
 		especialidadeService.incluirTodos(Arrays.asList(especialidade1, especialidade2));
 	}
 

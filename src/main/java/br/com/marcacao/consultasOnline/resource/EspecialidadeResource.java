@@ -15,12 +15,12 @@ import br.com.marcacao.consultasOnline.service.EspecialidadeService;
 public class EspecialidadeResource {
 	@Autowired
 	private EspecialidadeService especialidadeService;
-	private Especialidade especialidade1 = new Especialidade();
-	private Especialidade especialidade2 = new Especialidade();
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<?> buscar(@PathVariable Integer id) {
+
 		Especialidade especialidade = especialidadeService.buscar(id);
 		return ResponseEntity.ok().body(especialidade);
+		
 	}
 }

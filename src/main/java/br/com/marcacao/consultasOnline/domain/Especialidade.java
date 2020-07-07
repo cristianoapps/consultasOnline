@@ -1,32 +1,35 @@
 package br.com.marcacao.consultasOnline.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Data
-@AllArgsConstructor
+@RequiredArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
-@ToString
 @Entity
 public class Especialidade implements Serializable {
 
 	private static final long serialVersionUID = -6608138977020921513L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "cd_especialidade",nullable = false)
+	@Column(name = "cd_especialidade", nullable = false)
 	private Integer codigoEspecialidade;
-	@Column(name = "ds_especialidade",nullable = false) 
+	@Column(name = "ds_especialidade", nullable = false)
+	@NonNull
 	private String descricaoEspecialidade;
+	@ManyToMany(mappedBy = "especialidades")
+	private List<Medico> medicos = new ArrayList<>();
 }

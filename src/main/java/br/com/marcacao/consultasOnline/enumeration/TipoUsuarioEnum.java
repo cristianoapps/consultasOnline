@@ -7,15 +7,14 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public enum SexoEnum {
-	MASCULINO("M", "MASCULINO"), FEMININO("F", "FEMININO");
+public enum TipoUsuarioEnum {
+	MEDICO("M", "MEDICO"), PACIENTE("P", "PACIENTE");
 
 	@Getter
 	@Setter
-	private  String sigla;
+	private String sigla;
 	@Getter
 	@Setter
-	private  String descricao;
-
+	private String descricao;
 
 }

@@ -5,9 +5,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +26,7 @@ public class EspecialidadeResource {
 	private EspecialidadeService especialidadeService;
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<?> findById(@PathVariable Integer id) throws ObjectNotFoundException {
+	public ResponseEntity<Especialidade> findById(@PathVariable Integer id) throws ObjectNotFoundException {
 		Especialidade especialidade = especialidadeService.findById(id);
 		return ResponseEntity.ok().body(especialidade);
 
@@ -32,7 +34,6 @@ public class EspecialidadeResource {
 
 	@GetMapping
 	public ResponseEntity<?> findAll() {
-
 		List<Especialidade> especialidades = especialidadeService.findAll();
 		return ResponseEntity.ok().body(especialidades);
 
@@ -45,8 +46,14 @@ public class EspecialidadeResource {
 				.buildAndExpand(especialidadeSalva.getCodigoEspecialidade()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
-
-	public void delete(Especialidade especialidade) {
+	
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<Especialidade> update(@RequestBody Especialidade especialidade,@PathVariable Integer id){
+		especialidadeService.save(especialidade);
+		return ResponseEntity.noContent().build();
+	}
+	@DeleteMapping
+	public void delete(@RequestBody Especialidade especialidade) {
 		especialidadeService.delete(especialidade);
 	}
 }

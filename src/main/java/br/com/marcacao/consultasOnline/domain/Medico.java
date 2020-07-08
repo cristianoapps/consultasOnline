@@ -52,5 +52,11 @@ public class Medico implements Serializable {
 	@ManyToMany
 	@JoinTable(name = "ESPECIALIDADE_MEDICO", joinColumns = @JoinColumn(name = "cpf_medico"), inverseJoinColumns = @JoinColumn(name = "cd_especialidade"))
 	private List<Especialidade> especialidades = new ArrayList<>();
+	
+	@JsonManagedReference
+	@ManyToMany
+	@JoinTable(name = "CONTATO_MEDICO", joinColumns = @JoinColumn(name = "cpf_medico"), inverseJoinColumns = @JoinColumn(name = "cd_contato"))
+	private List<Contato> contatos = new ArrayList<>();
+
 
 }

@@ -13,8 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.marcacao.consultasOnline.enumeration.SimNaoEnum;
 import lombok.AllArgsConstructor;
@@ -35,13 +34,13 @@ public class Convenio implements Serializable {
 	@Column(name = "nm_convenio")
 	private String descricaoConvenio;
 	SimNaoEnum isAtivo;
-	@JsonManagedReference
 	@ManyToMany
 	@JoinTable(name = "CONVENIO_PLANO", joinColumns = @JoinColumn(name = "cd_convenio"), inverseJoinColumns = @JoinColumn(name = "cd_plano"))
 	List<Plano> planos = new ArrayList<Plano>();
-	@JsonBackReference
+	@JsonIgnore
 	@ManyToMany(mappedBy = "convenios")
 	private List<Carteira> carteiras = new ArrayList<>();
+	@JsonIgnore
 	@ManyToMany(mappedBy = "convenios")
 	private List<Agenda> agendas = new ArrayList<>();
 }

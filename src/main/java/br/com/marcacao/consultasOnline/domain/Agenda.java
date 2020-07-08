@@ -15,8 +15,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import br.com.marcacao.consultasOnline.enumeration.SimNaoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,7 +33,6 @@ public class Agenda implements Serializable {
 	private Integer codigoAgenda;
 	@JoinColumn(name = "cpf_medico")
 	Medico medico;
-	@JsonManagedReference
 	@ManyToMany
 	@JoinTable(name = "AGENDA_CONVENIO", joinColumns = @JoinColumn(name = "cd_agenda"), inverseJoinColumns = @JoinColumn(name = "cd_convenio"))
 	private List<Convenio> convenios = new ArrayList<>();	

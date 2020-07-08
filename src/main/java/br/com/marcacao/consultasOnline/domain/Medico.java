@@ -13,8 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import br.com.marcacao.consultasOnline.enumeration.SexoEnum;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -48,12 +46,12 @@ public class Medico implements Serializable {
 	@NonNull
 	private String crm;
 	
-	@JsonManagedReference
+	
 	@ManyToMany
 	@JoinTable(name = "ESPECIALIDADE_MEDICO", joinColumns = @JoinColumn(name = "cpf_medico"), inverseJoinColumns = @JoinColumn(name = "cd_especialidade"))
 	private List<Especialidade> especialidades = new ArrayList<>();
 	
-	@JsonManagedReference
+	
 	@ManyToMany
 	@JoinTable(name = "CONTATO_MEDICO", joinColumns = @JoinColumn(name = "cpf_medico"), inverseJoinColumns = @JoinColumn(name = "cd_contato"))
 	private List<Contato> contatos = new ArrayList<>();

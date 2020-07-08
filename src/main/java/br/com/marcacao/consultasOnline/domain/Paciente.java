@@ -12,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import br.com.marcacao.consultasOnline.enumeration.SexoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,9 +31,8 @@ public class Paciente implements Serializable {
 	@Column(name = "dt_nascimento")
 	private LocalDate dataNascimento;
 	private SexoEnum sexo;
-	@JoinColumn(name="cd_usuario")
+	@JoinColumn(name = "cd_usuario")
 	private Usuario usuario;
-	@JsonManagedReference
 	@ManyToMany
 	@JoinTable(name = "CONTATO_PACIENTE", joinColumns = @JoinColumn(name = "cpf_paciente"), inverseJoinColumns = @JoinColumn(name = "cd_contato"))
 	private List<Contato> contatos = new ArrayList<>();

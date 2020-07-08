@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.marcacao.consultasOnline.enumeration.SimNaoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,6 +32,7 @@ public class Plano implements Serializable {
 	@Column(name = "ds_plano")
 	private String descricaoPlano;
 	private SimNaoEnum isAtivo;
+	@JsonIgnore
 	@ManyToMany(mappedBy = "planos")
 	List<Convenio> convenios = new ArrayList<>();
 }

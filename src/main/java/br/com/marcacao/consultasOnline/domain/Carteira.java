@@ -13,8 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import br.com.marcacao.consultasOnline.enumeration.SimNaoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,7 +29,6 @@ public class Carteira implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cd_sequencial_carteira")
 	private Integer codigoSequencialCarteira;
-	@JsonManagedReference
 	@ManyToMany
 	@JoinTable(name = "CARTEIRA_CONVENIO", joinColumns = @JoinColumn(name = "cd_sequencial_carteira"), inverseJoinColumns = @JoinColumn(name = "cd_convenio"))
 	List<Convenio> convenios = new ArrayList<>();

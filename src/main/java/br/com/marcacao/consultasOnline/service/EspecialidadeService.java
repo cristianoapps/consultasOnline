@@ -28,16 +28,12 @@ public class EspecialidadeService {
 		return especialidades;
 	}
 
-	public void saveAll(List<Especialidade> especialidades) {
-		especialidadeRepository.saveAll(especialidades);
-	}
-
 	public Especialidade save(Especialidade especialidade) {
-		especialidadeRepository.save(especialidade);
-		return especialidade;
+		return especialidadeRepository.save(especialidade);
+
 	}
 
-	public void deleteAll() {
-		especialidadeRepository.deleteAll();
+	public void delete(Especialidade especialidade) {
+		especialidadeRepository.delete(especialidade);
 	}
 }

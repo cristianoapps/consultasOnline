@@ -43,12 +43,9 @@ public class ConsultasOnlineApplication implements CommandLineRunner {
 		especialidade2.getMedicos().add(medico2);
 		medico1.getEspecialidades().add(especialidade1);
 		medico2.getEspecialidades().add(especialidade2);
-		/*
+		
 		especialidades.addAll(Arrays.asList(especialidade1,especialidade2));
-		especialidadeService.deleteAll();
-		especialidadeService.saveAll(Arrays.asList(especialidade1, especialidade2));
-		medicoService.deleteAll();
-		medicoService.saveAll(Arrays.asList(medico1,medico2));*/
+		
 	}
 
 }

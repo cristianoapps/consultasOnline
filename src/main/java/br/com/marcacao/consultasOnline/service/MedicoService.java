@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.marcacao.consultasOnline.domain.Medico;
 import br.com.marcacao.consultasOnline.repositories.MedicoRepository;
-import br.com.marcacao.consultasOnline.service.exxeptions.AplicacaoException;
+import br.com.marcacao.consultasOnline.service.exceptions.AplicacaoException;
 import javassist.tools.rmi.ObjectNotFoundException;
 
 @Service

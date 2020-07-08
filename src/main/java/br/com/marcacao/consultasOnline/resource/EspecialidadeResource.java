@@ -52,8 +52,9 @@ public class EspecialidadeResource {
 		especialidadeService.save(especialidade);
 		return ResponseEntity.noContent().build();
 	}
-	@DeleteMapping
-	public void delete(@RequestBody Especialidade especialidade) {
-		especialidadeService.delete(especialidade);
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Void> delete( @PathVariable Integer id) throws ObjectNotFoundException {
+		especialidadeService.deleteById(id);
+		return ResponseEntity.noContent().build();
 	}
 }

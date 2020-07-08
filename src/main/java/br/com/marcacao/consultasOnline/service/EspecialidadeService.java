@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import br.com.marcacao.consultasOnline.domain.Especialidade;
 import br.com.marcacao.consultasOnline.repositories.EspecialidadeRepository;
-import br.com.marcacao.consultasOnline.service.exxeptions.AplicacaoException;
+import br.com.marcacao.consultasOnline.service.exceptions.AplicacaoException;
+import br.com.marcacao.consultasOnline.service.exceptions.DataIntegrityException;
 import javassist.tools.rmi.ObjectNotFoundException;
 
 @Service
@@ -33,7 +35,14 @@ public class EspecialidadeService {
 
 	}
 
-	public void delete(Especialidade especialidade) {
-		especialidadeRepository.delete(especialidade);
+	public void deleteById(Integer id) throws ObjectNotFoundException {
+		findById(id);
+		try {
+		especialidadeRepository.deleteById(id);
+		}catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityException("Não é possivel excluir uma especialidade que está atrelada a um médico");
+		}
 	}
+	
+	
 }

@@ -1,4 +1,4 @@
-package br.com.marcacao.consultasOnline.service.exxeptions;
+package br.com.marcacao.consultasOnline.service.exceptions;
 
 public class AplicacaoException extends RuntimeException {
 
